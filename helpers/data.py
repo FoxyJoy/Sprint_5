@@ -11,3 +11,14 @@ class MyData:
     password = 'Q123werty123Q'
     incorrect_pass = '12345'
     incorrect_user_name = ''
+
+class FormData:
+    place_an_order = 'Оформить заказ'
+    orders_history = 'История заказов'
+    build_burger = 'Соберите бургер'
+    enter = 'Вход'
+    incorrect_pass = 'Некорректный пароль'
+    user_exist = 'Такой пользователь уже существует'
+    sauces = 'Соусы'
+    fillings = 'Начинки'
+    buns = 'Булки'

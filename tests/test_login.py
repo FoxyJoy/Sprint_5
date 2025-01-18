@@ -1,9 +1,3 @@
-# Успешная авторизация 
-# - Авторизация по кнопке «Войти в аккаунт» на главной 
-# - Авторизация по кнопке «Личный кабинет» 
-# - Авторизация по кнопке "Войти" в форме регистрации 
-# - Авторизация по кнопке "Войти" в форме восстановления пароля 
-
 import pytest
 import time
 from selenium import webdriver
@@ -20,20 +14,16 @@ import helpers.locators as locators
 class TestStellarBurgersLogin:
     # Успешная авторизация
     def test_login_correct_email_and_pwd__show_main_page(self, driver: WebDriver):
-        driver = webdriver.Chrome()
         driver.get(Urls.url_main_paige)
 
         utilites.login(driver)
 
         order_button = driver.find_element(By.XPATH, locators.m_order_button).text
         
-        assert driver.current_url == Urls.url_main_paige and order_button == 'Оформить заказ'
-
-        driver.quit()
+        assert driver.current_url == Urls.url_main_paige and order_button == FormData.place_an_order
     
     # - Авторизация по кнопке «Войти в аккаунт» на главной 
     def test_authorization_on_button_Login_to_account(self, driver: WebDriver):
-        driver = webdriver.Chrome()
         driver.get(Urls.url_main_paige)
 
         driver.find_element(By.XPATH, locators.m_acc).click()
@@ -45,14 +35,10 @@ class TestStellarBurgersLogin:
         WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, locators.m_order_button)))
 
         order_button = driver.find_element(By.XPATH, locators.m_order_button).text
-        assert Urls.url_main_paige == driver.current_url and order_button == 'Оформить заказ'
-
-        driver.quit()
+        assert Urls.url_main_paige == driver.current_url and order_button == FormData.place_an_order
 
     # - Авторизация по кнопке «Личный кабинет» 
     def test_login_personal_account_button_show_login_page(self, driver: WebDriver):
-       
-        driver = webdriver.Chrome()
         driver.get(Urls.url_main_paige)
 
         driver.find_element(By.XPATH, locators.m_profile_button).click()
@@ -64,13 +50,11 @@ class TestStellarBurgersLogin:
         WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, locators.m_order_button)))
 
         cab_button = driver.find_element(By.XPATH, locators.m_order_button).text
-        assert Urls.url_main_paige == driver.current_url and cab_button == 'Оформить заказ'
+        assert Urls.url_main_paige == driver.current_url and cab_button == FormData.place_an_order
 
-        driver.quit()
                 
     # - Авторизация по кнопке "Войти" в форме регистрации 
     def test_registration_form_sign_in_button(self, driver: webdriver):
-        driver = webdriver.Chrome()
         driver.get(Urls.url_main_paige)
 
         driver.find_element(By.XPATH, locators.m_profile_button).click()
@@ -82,13 +66,10 @@ class TestStellarBurgersLogin:
         WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, locators.m_order_button)))
 
         come_button = driver.find_element(By.XPATH, locators.m_order_button).text
-        assert Urls.url_main_paige == driver.current_url and come_button == 'Оформить заказ'
-
-        driver.quit()
+        assert Urls.url_main_paige == driver.current_url and come_button == FormData.place_an_order
 
     # - Авторизация по кнопке "Войти" в форме восстановления пароля 
     def test_login_forgot_password_form_sign_in_button(self, driver: webdriver):
-        driver = webdriver.Chrome()
         driver.get(Urls.url_forgot_password)
 
         driver.find_element(By.XPATH, locators.p_login_text_with_href).click()
@@ -100,6 +81,6 @@ class TestStellarBurgersLogin:
         WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, locators.m_order_button)))
 
         c_button = driver.find_element(By.XPATH, locators.m_order_button).text
-        assert Urls.url_main_paige == driver.current_url and c_button == 'Оформить заказ'
+        assert Urls.url_main_paige == driver.current_url and c_button == FormData.place_an_order
         
-        driver.quit()
+
